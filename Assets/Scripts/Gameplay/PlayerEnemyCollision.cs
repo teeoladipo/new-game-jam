@@ -1,6 +1,7 @@
 using Platformer.Core;
 using Platformer.Mechanics;
 using Platformer.Model;
+using Unity.VisualScripting;
 using UnityEngine;
 using static Platformer.Core.Simulation;
 
@@ -46,10 +47,11 @@ namespace Platformer.Gameplay
             }
             else if (player.GetComponent<Health>().IsAlive)
             {
-                player.GetComponent<Health>().Decrement();
-                player.Teleport(new Vector3(player.transform.position.x + Mathf.Sign(player.transform.position.x - enemy.transform.position.x) * 0.8f, player.transform.position.y, player.transform.position.z));
+                //player.GetComponent<Health>().Decrement();
+                //player.Teleport(new Vector3(player.transform.position.x + Mathf.Sign(player.transform.position.x - enemy.transform.position.x) * 0.8f, player.transform.position.y, player.transform.position.z));
                 //player.Bounce(7);
                 //player.KnockBack(new Vector2(player.transform.position.x + Mathf.Sign(player.transform.position.x - enemy.transform.position.x) * 3f, 3f));
+                player.Damage();
             }
         }
     }

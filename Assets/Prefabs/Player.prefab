@@ -71,10 +71,15 @@ MonoBehaviour:
   LaunchOffset: {fileID: 3659558582682240607}
   AttackPoint: {fileID: 5926471830849744823}
   closeCombat: {fileID: 0}
+  invincibilityFrames: 1
   Defense: 0
   projectileCooldown: 0.3
   StrongerGravity: 0
   CloseCombatEnabled: 0
+  SlowFall: 0
+  isInvincible: 0
+  isSlowFalling: 0
+  slowFallSpeed: 0.5
   SavePoint: {fileID: 0}
 --- !u!212 &212064061491315838
 SpriteRenderer:
@@ -326,6 +331,7 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 8
+  health: {fileID: 0}
 --- !u!1 &3774107669497777410
 GameObject:
   m_ObjectHideFlags: 0

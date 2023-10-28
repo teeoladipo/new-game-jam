@@ -33,7 +33,7 @@ namespace Platformer.Mechanics
             health = GetComponent<Health>();
         }
 
-        void OnCollisionEnter2D(Collision2D collision)
+        void OnCollisionStay2D(Collision2D collision)
         {
             if(collision.gameObject.tag == "Player") {
                 var player = collision.gameObject.GetComponent<PlayerController>();
@@ -44,8 +44,12 @@ namespace Platformer.Mechanics
                     ev.enemy = this;
                 }
             }
-            else if(collision.gameObject.tag == "PlayerProjectile") {
+        }
+
+        void OnCollisionEnter2D(Collision2D collision) {
+            if(collision.gameObject.tag == "PlayerProjectile") {
                 health.Decrement(collision.gameObject.GetComponent<ProjectileBehavior>().damage);
+                Destroy(collision.gameObject);
             }
         }
 

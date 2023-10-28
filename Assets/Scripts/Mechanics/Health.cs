@@ -50,6 +50,7 @@ namespace Platformer.Mechanics
         }*/
 
         public void Decrement(int damage = 1) {
+            Debug.Log("decrement");
             currentHP = Mathf.Clamp(currentHP - damage, 0, maxHP);
             if (currentHP == 0)
             {

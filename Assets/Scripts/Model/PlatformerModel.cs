@@ -36,7 +36,9 @@ namespace Platformer.Model
         /// A global jump modifier applied to slow down an active jump when 
         /// the user releases the jump input.
         /// </summary>
-        public float jumpDeceleration = 0.5f;
+        public float jumpDeceleration = 0.1f;
+
+        public float flightAcceleration = 0.01f;
 
     }
 }
