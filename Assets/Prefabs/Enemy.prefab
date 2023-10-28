@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 772289407653213039}
   - component: {fileID: 5843668731025413174}
   - component: {fileID: 5659069126382443933}
-  m_Layer: 13
+  m_Layer: 3
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -292,3 +292,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  currentHP: 0

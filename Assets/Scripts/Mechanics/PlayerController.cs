@@ -37,6 +37,9 @@ namespace Platformer.Mechanics
 
         public ProjectileBehavior ProjectilePrefab;
         public Transform LaunchOffset;
+        public Transform AttackPoint;
+
+        public PlayerCloseCombat closeCombat;
 
         bool jump;
         Vector2 move;
@@ -72,6 +75,7 @@ namespace Platformer.Mechanics
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
+            closeCombat = GetComponent<PlayerCloseCombat>();
         }
 
         protected override void Update()
@@ -148,12 +152,16 @@ namespace Platformer.Mechanics
             if (move.x > 0.01f) {
                 spriteRenderer.flipX = false;
                 LaunchOffset.localPosition = new Vector3(Mathf.Abs(LaunchOffset.localPosition.x), LaunchOffset.localPosition.y, LaunchOffset.localPosition.z);
-                LaunchOffset.transform.rotation = Quaternion.identity;
+                LaunchOffset.transform.rotation = Quaternion.Euler(0, 0, -90);
+                AttackPoint.localPosition = new Vector3(Mathf.Abs(LaunchOffset.localPosition.x), LaunchOffset.localPosition.y, LaunchOffset.localPosition.z);
+                AttackPoint.transform.rotation = Quaternion.identity;
             }
             else if (move.x < -0.01f) {
                 spriteRenderer.flipX = true;
                 LaunchOffset.localPosition = new Vector3(-1 * Mathf.Abs(LaunchOffset.localPosition.x), LaunchOffset.localPosition.y, LaunchOffset.localPosition.z);
-                LaunchOffset.transform.rotation = Quaternion.Euler(0, 180, 0);
+                LaunchOffset.transform.rotation = Quaternion.Euler(0, 180, -90);
+                AttackPoint.localPosition = new Vector3(-1 * Mathf.Abs(LaunchOffset.localPosition.x), LaunchOffset.localPosition.y, LaunchOffset.localPosition.z);
+                AttackPoint.transform.rotation = Quaternion.Euler(0, 180, 0);
             }
 
             animator.SetBool("grounded", IsGrounded);
