@@ -10,7 +10,11 @@ public class ChipInstance : MonoBehaviour
     public enum type{
         HEALTH,
         DEFENSE,
-        STAT
+        STAT_PROJ_SPD,
+        STAT_PROJ_DMG,
+        STAT_ATK_SPD,
+        STAT_ATK_DMG,
+        STAT_MVMT_SPD
     }
 
     public type Type = type.HEALTH;
@@ -26,7 +30,7 @@ public class ChipInstance : MonoBehaviour
             case type.DEFENSE:
                 sprite.color = new Color(0.5f, 0.5f, 1, 1);
                 break;
-            case type.STAT:
+            default:
                 sprite.color = new Color(0.5f, 1, 0.5f, 1);
                 break;
         }

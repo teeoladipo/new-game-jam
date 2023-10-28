@@ -9,7 +9,7 @@ public class PlayerCloseCombat : MonoBehaviour
     public Animator animator;
     public Transform attackPoint;
     public float attackRange = 0.5f;
-    public int MeleeDamage = 1;
+    public float MeleeDamage = 2f;
     public float attackRate = 0.25f;
     public LayerMask enemyLayers;
 

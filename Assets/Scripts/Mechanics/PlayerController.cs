@@ -23,7 +23,7 @@ namespace Platformer.Mechanics
         /// <summary>
         /// Max horizontal speed of the player.
         /// </summary>
-        public float maxSpeed = 7;
+        public float maxSpeed = 3;
         /// <summary>
         /// Initial jump velocity at the start of a jump.
         /// </summary>
@@ -60,7 +60,8 @@ namespace Platformer.Mechanics
 
         // abilities related fields
 
-        public float projectileCooldown = 0.3f;
+        public float projectileCooldown = 0.4f;
+        public float projectileDamage = 1;
         public bool StrongerGravity = false;
 
         public bool CloseCombatEnabled = false;
@@ -224,8 +225,28 @@ namespace Platformer.Mechanics
             else if (type == ChipInstance.type.DEFENSE) {
                 Defense++;
             }
-            else{
-                // add stats
+            switch(type) {
+                case ChipInstance.type.HEALTH:
+                    health.Increment();
+                    break;
+                case ChipInstance.type.DEFENSE:
+                    Defense++;
+                    break;
+                case ChipInstance.type.STAT_PROJ_SPD:
+                    projectileCooldown *= 0.8f;
+                    break;
+                case ChipInstance.type.STAT_PROJ_DMG:
+                    projectileDamage += 0.25f;
+                    break;
+                case ChipInstance.type.STAT_ATK_SPD:
+                    closeCombat.attackRate *= 0.8f;
+                    break;
+                case ChipInstance.type.STAT_ATK_DMG:
+                    closeCombat.MeleeDamage += 0.5f;
+                    break;
+                case ChipInstance.type.STAT_MVMT_SPD:
+                    maxSpeed += 0.5f;
+                    break;
             }
         }
 
