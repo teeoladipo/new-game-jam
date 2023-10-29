@@ -61,6 +61,7 @@ namespace Platformer.Mechanics
                     Schedule<PlayerDeath>();
                 }
                 else if(gameObject.CompareTag("Enemy")) {
+                    gameObject.GetComponent<EnemyController>().Die();
                     var ev = Schedule<EnemyDeath>();
                     ev.enemy = gameObject.GetComponent<EnemyController>();
                 }

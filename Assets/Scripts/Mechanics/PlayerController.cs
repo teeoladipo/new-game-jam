@@ -60,7 +60,7 @@ namespace Platformer.Mechanics
 
         // abilities related fields
 
-        public float projectileCooldown = 0.4f;
+        public float projectileCooldown = 0.5f;
         public float projectileDamage = 1;
         public bool StrongerGravity = false;
 
@@ -233,24 +233,24 @@ namespace Platformer.Mechanics
                     Defense++;
                     break;
                 case ChipInstance.type.STAT_PROJ_SPD:
-                    projectileCooldown *= 0.8f;
+                    projectileCooldown *= 0.9f;
                     break;
                 case ChipInstance.type.STAT_PROJ_DMG:
                     projectileDamage += 0.25f;
                     break;
                 case ChipInstance.type.STAT_ATK_SPD:
-                    closeCombat.attackRate *= 0.8f;
+                    closeCombat.attackRate *= 0.9f;
                     break;
                 case ChipInstance.type.STAT_ATK_DMG:
                     closeCombat.MeleeDamage += 0.5f;
                     break;
                 case ChipInstance.type.STAT_MVMT_SPD:
-                    maxSpeed += 0.5f;
+                    maxSpeed += 0.25f;
                     break;
             }
         }
 
-        public void Damage(int damage = 1) {
+        public void Damage(float damage = 1) {
             if(isInvincible || !health.IsAlive)
                 return;
             health.Decrement(damage);

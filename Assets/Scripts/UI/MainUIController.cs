@@ -23,7 +23,7 @@ namespace Platformer.UI
 
         void OnEnable()
         {
-            SetActivePanel(2);
+            SetActivePanel(0);
         }
     }
 }

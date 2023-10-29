@@ -21,7 +21,7 @@ namespace Platformer.Mechanics
         internal AudioSource _audio;
         internal Health health;
 
-        private PlayerController player;
+        protected PlayerController player;
         SpriteRenderer spriteRenderer;
 
         public Bounds Bounds => _collider.bounds;
@@ -46,6 +46,9 @@ namespace Platformer.Mechanics
                     ev.enemy = this;
                 }
             }
+            else{
+                Debug.Log(collision.gameObject.tag);
+            }
         }
 
         void OnCollisionEnter2D(Collision2D collision) {
@@ -64,5 +67,13 @@ namespace Platformer.Mechanics
             }
         }
 
+        public void Die() {
+            StartCoroutine(Death());
+        }
+
+        public IEnumerator Death() {
+            yield return new WaitForSeconds(1);
+            Destroy(gameObject);
+        }
     }
 }
