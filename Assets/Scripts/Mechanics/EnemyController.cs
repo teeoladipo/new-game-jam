@@ -27,6 +27,10 @@ namespace Platformer.Mechanics
 
         public Bounds Bounds => _collider.bounds;
 
+        public ChipInstance.type type;
+
+        public ChipInstance chip;
+
         protected void Awake()
         {
             control = GetComponent<AnimationController>();
@@ -71,6 +75,9 @@ namespace Platformer.Mechanics
 
         public void Die() {
             StartCoroutine(Death());
+            control.PlayDeathAnimation();
+            ChipInstance drop = Instantiate(chip, transform.position, transform.rotation);
+            drop.Type = type;
         }
 
         public IEnumerator Death() {

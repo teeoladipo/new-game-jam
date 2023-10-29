@@ -15,16 +15,19 @@ public class PlayerCloseCombat : MonoBehaviour
 
     public Health health;
 
+    public PlayerController controller;
+
     bool attackEnabled = true;
 
     void Start() {
         health = GetComponent<Health>();
+        controller = GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0)) { // mouse button
+        if(controller.CloseCombatEnabled && Input.GetMouseButtonDown(0)) { // mouse button
             Attack();
         }
     }

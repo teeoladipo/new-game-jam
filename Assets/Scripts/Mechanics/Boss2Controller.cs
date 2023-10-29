@@ -53,6 +53,7 @@ public class Boss2Controller : EnemyController
             }
         }
         else if(currentState == State.Move_back) {
+            control.SetTrigger("idle");
             if(!touchingWall)
                 transform.position += new Vector3(Mathf.Sign(transform.position.x - player.transform.position.x), 0, 0) * Time.deltaTime * Speed;
         }
@@ -69,11 +70,13 @@ public class Boss2Controller : EnemyController
         currentState = State.Move_back;
         yield return new WaitForSeconds(moveBackTime);
         currentState = State.Charge;
+        control.SetTrigger("charge");
     }
 
     public IEnumerator Attack() {
         currentState = State.Attack;
         yield return new WaitForSeconds(attackTime);
+        control.SetTrigger("attack");
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, attackRange, playerLayer);
         if(hitEnemies.Length > 0) {
             player.Damage(damage);

@@ -39,6 +39,7 @@ namespace Platformer.Mechanics
         {
             Vector2 targetXPos = new Vector2(player.transform.position.x, transform.position.y);
             transform.position = Vector2.MoveTowards(transform.position, targetXPos, speed * Time.deltaTime);
+            control.velocity.x = Mathf.Sign(player.transform.position.x - transform.position.x);
 
             if (canFly) {
                 Vector2 targetYPos = new Vector2(transform.position.x, player.transform.position.y);

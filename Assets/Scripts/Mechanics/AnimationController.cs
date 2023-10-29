@@ -72,5 +72,13 @@ namespace Platformer.Mechanics
 
             targetVelocity = move * maxSpeed;
         }
+        public void PlayDeathAnimation() {
+            animator.SetTrigger("death");
+        }
+
+        public void SetTrigger(string trigger) {
+            animator.SetTrigger(trigger);
+        }
     }
+
 }

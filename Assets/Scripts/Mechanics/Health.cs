@@ -26,9 +26,9 @@ namespace Platformer.Mechanics
         /// <summary>
         /// Increment the HP of the entity.
         /// </summary>
-        public void Increment()
+        public void Increment(float hp = 1)
         {
-            currentHP = Mathf.Clamp(currentHP + 1, 0, maxHP);
+            currentHP = Mathf.Clamp(currentHP + hp, 0, maxHP);
             healthBar.SetHealth(currentHP, maxHP);
         }
 
