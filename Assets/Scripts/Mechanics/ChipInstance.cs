@@ -25,13 +25,13 @@ public class ChipInstance : MonoBehaviour
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
         switch(Type) {
             case type.HEALTH:
-                sprite.color = new Color(1, 0.5f, 0.5f, 1);
+                sprite.color = new Color(0.5f, 1, 0.5f, 1); // green
                 break;
             case type.DEFENSE:
-                sprite.color = new Color(0.5f, 0.5f, 1, 1);
+                sprite.color = new Color(0.5f, 0.5f, 1, 1); // blue
                 break;
             default:
-                sprite.color = new Color(0.5f, 1, 0.5f, 1);
+                sprite.color = new Color(1, 0.5f, 0.5f, 1); // red
                 break;
         }
     }

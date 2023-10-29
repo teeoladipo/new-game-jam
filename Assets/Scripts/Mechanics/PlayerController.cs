@@ -107,7 +107,7 @@ namespace Platformer.Mechanics
                     Schedule<PlayerStopJump>().player = this;
                 }
                 else if(jumpState == JumpState.InFlight) {
-                    if(Input.GetButton("Jump"))
+                    if(SlowFall && Input.GetButton("Jump"))
                         isSlowFalling = true;
                 }
                 
@@ -177,14 +177,14 @@ namespace Platformer.Mechanics
                 spriteRenderer.flipX = false;
                 LaunchOffset.localPosition = new Vector3(Mathf.Abs(LaunchOffset.localPosition.x), LaunchOffset.localPosition.y, LaunchOffset.localPosition.z);
                 LaunchOffset.transform.rotation = Quaternion.Euler(0, 0, -90);
-                AttackPoint.localPosition = new Vector3(Mathf.Abs(LaunchOffset.localPosition.x), LaunchOffset.localPosition.y, LaunchOffset.localPosition.z);
+                AttackPoint.localPosition = new Vector3(Mathf.Abs(AttackPoint.localPosition.x), AttackPoint.localPosition.y, AttackPoint.localPosition.z);
                 AttackPoint.transform.rotation = Quaternion.identity;
             }
             else if (move.x < -0.01f) {
                 spriteRenderer.flipX = true;
                 LaunchOffset.localPosition = new Vector3(-1 * Mathf.Abs(LaunchOffset.localPosition.x), LaunchOffset.localPosition.y, LaunchOffset.localPosition.z);
                 LaunchOffset.transform.rotation = Quaternion.Euler(0, 180, -90);
-                AttackPoint.localPosition = new Vector3(-1 * Mathf.Abs(LaunchOffset.localPosition.x), LaunchOffset.localPosition.y, LaunchOffset.localPosition.z);
+                AttackPoint.localPosition = new Vector3(-1 * Mathf.Abs(AttackPoint.localPosition.x), AttackPoint.localPosition.y, AttackPoint.localPosition.z);
                 AttackPoint.transform.rotation = Quaternion.Euler(0, 180, 0);
             }
 

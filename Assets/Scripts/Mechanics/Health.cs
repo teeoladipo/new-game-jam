@@ -21,6 +21,7 @@ namespace Platformer.Mechanics
         public bool IsAlive => currentHP > 0;
 
         public float currentHP;
+        public HealthBarBehavior healthBar;
 
         /// <summary>
         /// Increment the HP of the entity.
@@ -28,6 +29,7 @@ namespace Platformer.Mechanics
         public void Increment()
         {
             currentHP = Mathf.Clamp(currentHP + 1, 0, maxHP);
+            healthBar.SetHealth(currentHP, maxHP);
         }
 
         /// <summary>
@@ -52,6 +54,7 @@ namespace Platformer.Mechanics
         public void Decrement(float damage = 1) {
             Debug.Log("decrement");
             currentHP = Mathf.Clamp(currentHP - damage, 0, maxHP);
+            healthBar.SetHealth(currentHP, maxHP);
             if (currentHP == 0)
             {
                 if(gameObject.CompareTag("Player")) {
@@ -74,11 +77,16 @@ namespace Platformer.Mechanics
 
         public void Restore() {
             currentHP = maxHP;
+            healthBar.SetHealth(currentHP, maxHP);
         }
 
         void Awake()
         {
             currentHP = maxHP;
+        }
+
+        void Start() {
+            healthBar.SetHealth(currentHP, maxHP);
         }
     }
 }
