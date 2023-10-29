@@ -20,6 +20,7 @@ namespace Platformer.Mechanics
         internal Collider2D _collider;
         internal AudioSource _audio;
         internal Health health;
+        internal Vector3 startPos;
 
         protected PlayerController player;
         SpriteRenderer spriteRenderer;
@@ -34,6 +35,7 @@ namespace Platformer.Mechanics
             spriteRenderer = GetComponent<SpriteRenderer>();
             health = GetComponent<Health>();
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+            startPos = transform.position;
         }
 
         protected void OnCollisionStay2D(Collision2D collision)
