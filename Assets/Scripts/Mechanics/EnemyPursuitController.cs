@@ -15,21 +15,23 @@ namespace Platformer.Mechanics
         public float speed = 1.5F;
         public float chaseRange = 5;
         public bool canFly = false;
-        public Transform startPos;
+        
         new protected void Update()
         {
             if (player != null)
             {
-                if (Vector2.Distance(transform.position, player.transform.position) < chaseRange && health.IsAlive)
+                if (health.IsAlive)
                 {
-                    Chase();
-                    FaceDirection();
+                    if (Vector2.Distance(transform.position, player.transform.position) < chaseRange)
+                    {
+                        Chase();
+                        FaceDirection();
+                    }
+                    else
+                    {
+                        ReturnPos();
+                    }
                 }
-                else
-                {
-                    ReturnPos();
-                }
-                
             }
         }
         
@@ -42,9 +44,6 @@ namespace Platformer.Mechanics
                 Vector2 targetYPos = new Vector2(transform.position.x, player.transform.position.y);
                 transform.position = Vector2.MoveTowards(transform.position, targetYPos, speed / 2 * Time.deltaTime);
             }
-            
-
-            //transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         }
 
         private void FaceDirection()
@@ -61,12 +60,12 @@ namespace Platformer.Mechanics
 
         private void ReturnPos()
         {
-            Vector2 targetXPos = new Vector2(startPos.position.x, transform.position.y);
+            Vector2 targetXPos = new Vector2(startPos.x, transform.position.y);
             transform.position = Vector2.MoveTowards(transform.position, targetXPos, speed * Time.deltaTime);
 
             if (canFly)
             {
-                Vector2 targetYPos = new Vector2(transform.position.x, startPos.position.y);
+                Vector2 targetYPos = new Vector2(transform.position.x, startPos.y);
                 transform.position = Vector2.MoveTowards(transform.position, targetYPos, speed / 2 * Time.deltaTime);
             }
         }
