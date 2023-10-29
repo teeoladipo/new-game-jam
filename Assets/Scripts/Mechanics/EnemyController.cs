@@ -21,12 +21,12 @@ namespace Platformer.Mechanics
         internal AudioSource _audio;
         internal Health health;
 
-        private PlayerController player;
+        protected PlayerController player;
         SpriteRenderer spriteRenderer;
 
         public Bounds Bounds => _collider.bounds;
 
-        void Awake()
+        protected void Awake()
         {
             control = GetComponent<AnimationController>();
             _collider = GetComponent<Collider2D>();
@@ -36,7 +36,7 @@ namespace Platformer.Mechanics
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         }
 
-        void OnCollisionStay2D(Collision2D collision)
+        protected void OnCollisionStay2D(Collision2D collision)
         {
             if(collision.gameObject.tag == "Player") {
                 if (player != null)
@@ -48,14 +48,14 @@ namespace Platformer.Mechanics
             }
         }
 
-        void OnCollisionEnter2D(Collision2D collision) {
+        protected void OnCollisionEnter2D(Collision2D collision) {
             if(collision.gameObject.tag == "PlayerProjectile") {
                 health.Decrement(player.projectileDamage);
                 Destroy(collision.gameObject);
             }
         }
 
-        void Update()
+        protected void Update()
         {
             if (path != null)
             {
