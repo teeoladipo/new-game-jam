@@ -255,6 +255,7 @@ namespace Platformer.Mechanics
                 return;
             health.Decrement(damage);
             audioSource.PlayOneShot(ouchAudio);
+            animator.SetTrigger("hurt");
             StartCoroutine(InvincibleAfterHit());
         }
 
