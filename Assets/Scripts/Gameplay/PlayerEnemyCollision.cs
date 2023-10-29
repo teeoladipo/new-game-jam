@@ -25,7 +25,8 @@ namespace Platformer.Gameplay
             float step = 25;
             for (float alpha = 10f; alpha >= 0; alpha -= 0.1f)
             {
-                player.transform.position = Vector2.MoveTowards(player.transform.position, enemy.transform.position, -step * Time.deltaTime);
+                Vector2 targetXPos = new Vector2(enemy.transform.position.x, player.transform.position.y);
+                player.transform.position = Vector2.MoveTowards(player.transform.position, targetXPos, -step * Time.deltaTime);
                 step /= 1.1f;
                 yield return null;
             }
